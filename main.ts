@@ -8,17 +8,18 @@ basic.forever(function () {
     if (pins.digitalReadPin(DigitalPin.P1) == 0) {
         basic.showIcon(IconNames.Square)
         if (portaAperta == 0) {
-            for (let indice = 0; indice <= 180; indice++) {
+            for (let indice = 0; indice <= 90; indice++) {
                 pins.servoWritePin(AnalogPin.P0, indice)
                 pins.digitalWritePin(DigitalPin.P8, randint(0, 1))
                 pins.digitalWritePin(DigitalPin.P12, randint(0, 1))
                 pins.digitalWritePin(DigitalPin.P16, randint(0, 1))
-                basic.pause(10)
+                basic.pause(20)
             }
             portaAperta = 1
             pins.digitalWritePin(DigitalPin.P8, 1)
             pins.digitalWritePin(DigitalPin.P12, 1)
             pins.digitalWritePin(DigitalPin.P16, 1)
+            pins.servoWritePin(AnalogPin.P0, 180)
         }
     } else {
         basic.showIcon(IconNames.No)
